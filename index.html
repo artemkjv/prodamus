@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <link href="./output.css" rel="stylesheet">
     <title>Title</title>
-
+    <script>
+        var openAccordion = function (buttonId, contentId) {
+            let button = document.querySelector("#" + buttonId)
+            let content = document.getElementById("#" + contentId)
+            let expanded = Boolean(button.getAttribute('aria-expanded'))
+            let hidden = Boolean(content.getAttribute('aria-hidden'))
+            button.setAttribute('aria-expanded', String(!expanded))
+            content.setAttribute('aria-hidden', String(!hidden))
+        }
+    </script>
 </head>
 <body>
 <div class="hero">
@@ -344,8 +353,58 @@
         <img src="https://static.tildacdn.com/tild3762-6463-4565-a366-303563333031/FireShot_Capture_076.png" class="m-auto" alt="">
     </div>
 </div>
-<div>
+<div class="section">
+    <div class="m-auto container max-w-[1160px] py-5 mt-5">
+        <p class="text-3xl font-[600] leading-[43px]">
+            Ответы на частые вопросы:
+        </p>
 
+        <div class="accordion-panel">
+            <h2 class="accordion-title" id="panel-title">
+                <button
+                        onclick="openAccordion('first-accordion-button', 'first-accordion-content')"
+                        aria-expanded="false"
+                        class="accordion-trigger"
+                        id="first-accordion-button"
+                        aria-controls="accordion-content"
+                >
+                    <span class="accordion-btn">Сколько времени занимает подключение?</span>
+                    <svg
+                            class="accordion-icon"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle cx="24" cy="24" r="24" fill="#FFFFFF" />
+                        <rect x="23" y="12" width="2" height="24" rx="1" fill="#17172C" />
+                        <rect
+                                x="36"
+                                y="23"
+                                width="2"
+                                height="24"
+                                rx="1"
+                                transform="rotate(90 36 23)"
+                                fill="#17172C"
+                        />
+                    </svg>
+                </button>
+            </h2>
+            <div
+                    class="accordion-content"
+                    role="region"
+                    aria-hidden="true"
+                    aria-labelledby="panel-title"
+                    id="first-accordion-content"
+            >
+                <div>
+                    <p class="accordion-desc">
+                        Подключение занимает 1, максимум 2 дня.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 </body>
 </html>

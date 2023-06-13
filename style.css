@@ -28,3 +28,70 @@ p
     background: #f5f5f5;
 }
 
+.accordion-content {
+    display: grid;
+    font-size: 14px;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 500ms;
+}
+
+.accordion-content[aria-hidden='false'] {
+    grid-template-rows: 1fr;
+}
+
+.accordion-content > div {
+    overflow: hidden;
+}
+.accordion-panel {
+    text-align: left;
+    padding: 28px 18px;
+    background: #ffffff;
+    box-shadow: 0px 4px 10px rgba(141, 141, 141, 0.25);
+    border-radius: 10px;
+    width: 100%;
+}
+
+.accordion-title {
+    position: relative;
+}
+
+.accordion-trigger {
+    background: transparent;
+    text-align: left;
+    width: 100%;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.accordion-btn {
+    width: 220px;
+}
+.accordion-icon {
+    flex-shrink: 1;
+    width: 48px;
+    height: 48px;
+}
+.accordion-trigger[aria-expanded='true'] > svg {
+    transform: rotate(45deg);
+    transition: all 0.5s ease-in-out;
+}
+.accordion-trigger[aria-expanded='false'] > svg {
+    transform: rotate(0deg);
+    transition: all 0.5s ease-in-out;
+}
+.accordion-desc {
+    font-size: 14px;
+}
+@media screen and (min-width: 768px) {
+    .accordion-btn {
+        width: auto;
+        font-size: 20px;
+    }
+    .accordion-panel {
+        padding: 17px 36px;
+    }
+    .accordion-desc {
+        font-size: 16px;
+    }
+}
