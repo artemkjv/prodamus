@@ -31,23 +31,27 @@ p
 .accordion-content {
     display: grid;
     font-size: 14px;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 500ms;
-}
-
-.accordion-content[aria-hidden='false'] {
     grid-template-rows: 1fr;
+    transition: max-height ease-in-out 0.3s,opacity ease-in-out 0.3s;
 }
 
 .accordion-content > div {
-    overflow: hidden;
+    max-height: 500px;
+    transition: max-height ease-in-out 0.3s,opacity ease-in-out 0.3s;
 }
+
+.accordion-content[aria-hidden=""] > div {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height ease-in-out 0.3s,opacity ease-in-out 0.3s;
+}
+
 .accordion-panel {
     text-align: left;
     padding: 28px 18px;
     background: #ffffff;
-    box-shadow: 0px 4px 10px rgba(141, 141, 141, 0.25);
-    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(141, 141, 141, 0.25);
+    border-radius: 2px;
     width: 100%;
 }
 
@@ -65,6 +69,7 @@ p
     justify-content: space-between;
 }
 .accordion-btn {
+    font-weight: bold;
     width: 220px;
 }
 .accordion-icon {
@@ -72,26 +77,28 @@ p
     width: 48px;
     height: 48px;
 }
-.accordion-trigger[aria-expanded='true'] > svg {
-    transform: rotate(45deg);
-    transition: all 0.5s ease-in-out;
-}
-.accordion-trigger[aria-expanded='false'] > svg {
+
+.accordion-trigger > svg {
     transform: rotate(0deg);
     transition: all 0.5s ease-in-out;
 }
+
+.accordion-trigger[aria-expanded=""] > svg {
+    transform: rotate(45deg);
+    transition: all 0.5s ease-in-out;
+}
+
 .accordion-desc {
-    font-size: 14px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 35px;
 }
 @media screen and (min-width: 768px) {
     .accordion-btn {
         width: auto;
-        font-size: 20px;
+        font-size: 24px;
     }
     .accordion-panel {
         padding: 17px 36px;
-    }
-    .accordion-desc {
-        font-size: 16px;
     }
 }

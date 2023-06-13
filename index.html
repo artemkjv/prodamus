@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <link href="./output.css" rel="stylesheet">
     <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
         var openAccordion = function (buttonId, contentId) {
-            let button = document.querySelector("#" + buttonId)
-            let content = document.getElementById("#" + contentId)
-            let expanded = Boolean(button.getAttribute('aria-expanded'))
-            let hidden = Boolean(content.getAttribute('aria-hidden'))
-            button.setAttribute('aria-expanded', String(!expanded))
-            content.setAttribute('aria-hidden', String(!hidden))
+            let button = $(buttonId)
+            let content = $(contentId)
+            let expanded = Boolean(button[0].hasAttribute('aria-expanded'))
+            expanded ? button[0].removeAttribute('aria-expanded') : button[0].setAttribute('aria-expanded', '')
+            expanded ? content[0].setAttribute('aria-hidden', '') : content[0].removeAttribute('aria-hidden')
         }
     </script>
 </head>
@@ -355,15 +355,14 @@
 </div>
 <div class="section">
     <div class="m-auto container max-w-[1160px] py-5 mt-5">
-        <p class="text-3xl font-[600] leading-[43px]">
+        <p class="text-4xl font-[600] leading-[43px]">
             Ответы на частые вопросы:
         </p>
 
-        <div class="accordion-panel">
-            <h2 class="accordion-title" id="panel-title">
+        <div class="accordion-panel mt-5">
+            <h2 class="accordion-title">
                 <button
-                        onclick="openAccordion('first-accordion-button', 'first-accordion-content')"
-                        aria-expanded="false"
+                        onclick="openAccordion('#first-accordion-button', '#first-accordion-content')"
                         class="accordion-trigger"
                         id="first-accordion-button"
                         aria-controls="accordion-content"
@@ -392,7 +391,7 @@
             <div
                     class="accordion-content"
                     role="region"
-                    aria-hidden="true"
+                    aria-hidden=""
                     aria-labelledby="panel-title"
                     id="first-accordion-content"
             >
@@ -402,6 +401,446 @@
                     </p>
                 </div>
             </div>
+        </div>
+        <div class="accordion-panel mt-1">
+            <h2 class="accordion-title">
+                <button
+                        onclick="openAccordion('#second-accordion-button', '#second-accordion-content')"
+                        class="accordion-trigger"
+                        id="second-accordion-button"
+                        aria-controls="accordion-content"
+                >
+                    <span class="accordion-btn">
+                        На основании чего происходят взаиморасчеты? Вы заключаете договор?
+                    </span>
+                    <svg
+                            class="accordion-icon"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle cx="24" cy="24" r="24" fill="#FFFFFF" />
+                        <rect x="23" y="12" width="2" height="24" rx="1" fill="#17172C" />
+                        <rect
+                                x="36"
+                                y="23"
+                                width="2"
+                                height="24"
+                                rx="1"
+                                transform="rotate(90 36 23)"
+                                fill="#17172C"
+                        />
+                    </svg>
+                </button>
+            </h2>
+            <div
+                    class="accordion-content"
+                    role="region"
+                    aria-hidden=""
+                    aria-labelledby="panel-title"
+                    id="second-accordion-content"
+            >
+                <div>
+                    <p class="accordion-desc">
+                        Мы работаем на основании договора-оферты. Его мы можем заключить с любым юридическим лицом, ИП и самозанятым.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-panel mt-1">
+            <h2 class="accordion-title">
+                <button
+                        onclick="openAccordion('#third-accordion-button', '#third-accordion-content')"
+                        class="accordion-trigger"
+                        id="third-accordion-button"
+                        aria-controls="accordion-content"
+                >
+                    <span class="accordion-btn">
+                        В чем суть 54-ФЗ и зачем выдавать чеки?
+                    </span>
+                    <svg
+                            class="accordion-icon"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle cx="24" cy="24" r="24" fill="#FFFFFF" />
+                        <rect x="23" y="12" width="2" height="24" rx="1" fill="#17172C" />
+                        <rect
+                                x="36"
+                                y="23"
+                                width="2"
+                                height="24"
+                                rx="1"
+                                transform="rotate(90 36 23)"
+                                fill="#17172C"
+                        />
+                    </svg>
+                </button>
+            </h2>
+            <div
+                    class="accordion-content"
+                    role="region"
+                    aria-hidden=""
+                    aria-labelledby="panel-title"
+                    id="third-accordion-content"
+            >
+                <div>
+                    <p class="accordion-desc">
+                        С 1 июля 2017 года все интернет-магазины, принимающие оплату за товары или услуги, обязаны выдавать кассовый чек в соответствии с 54-ФЗ.
+                        <br><br>
+                        В случае нарушения предусмотрен штраф в размере от 10.000 руб. При повторном нарушении сначала предусмотрен штраф, потом приостановление деятельности на 3 месяца, и дисквалификация руководителя на 1–2 года. Срок давности за нарушения кассовой дисциплины продлен до 1 года. На сайте Федеральной налоговой службы есть мобильные приложения для Android и iOS. Любой покупатель может проверить QR-код чека, а также отправить жалобу в ФНС.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section !pt-10">
+    <div class="m-auto container max-w-[1160px] rounded-lg px-20 py-[40px] pb-0 border-gray-700 border-[1px] mt-5 bg-white">
+        <div class="flex">
+            <div>
+                <p class="text-2xl font-bold text-green-700">
+                    Нам важно, чтобы ваш проект рос, а вы зарабатывали больше, поэтому
+                </p>
+                <p class="mt-10 leading-[60px] text-4xl font-bold whitespace-break-spaces">В подарок за подключение к
+Продамус, мы дарим блиц-курс по продажам через переписки от нашего партнера
+                </p>
+                <p class="mt-15 text-xl">
+                    Все недооценивают силу продаж через переписки, но кейсы говорят сами за себя...
+                    Работая ТОЛЬКО через "Единое Окно"
+                </p>
+            </div>
+            <div>
+                <img class="max-w-[120%] relative top-[-40px]" src="https://static.tildacdn.com/tild3733-6535-4731-b233-353937346665/Saly-14.png" alt="">
+            </div>
+        </div>
+        <div class="mt-20">
+            <p class="text-4xl font-bold">Кейсы:</p>
+            <div class="case-block mt-5">
+                <div class="case-details">
+                    <p class="text-xl font-bold">
+                        Руслан Фаршатов
+                    </p>
+                    <p class="mt-2 text-lg">
+                        Ежемесячная выручка до: 7М
+                    </p>
+                    <p class="mt-2 text-lg">
+                        После:15М
+                    </p>
+                </div>
+                <div class="case-image mt-5">
+                    <img class="border-[1px] border-gray-700 rounded-lg" src="https://static.tildacdn.com/tild6161-3661-4764-b037-303362396263/__2022-08-27__1818.png" alt="">
+                </div>
+            </div>
+            <div class="case-block mt-5">
+                <div class="case-details">
+                    <p class="text-xl font-bold">
+                        Аревик Восканян
+                    </p>
+                    <p class="mt-2 text-lg">
+                        Ежемесячная выручка до: 500к
+                    </p>
+                    <p class="mt-2 text-lg">
+                        После: 5м+
+                    </p>
+                </div>
+                <div class="case-image mt-5">
+                    <img class="border-[1px] border-gray-700 rounded-lg" src="https://static.tildacdn.com/tild3835-3166-4961-b734-643934373635/__2022-08-27__1819.png" alt="">
+                </div>
+            </div>
+            <div class="case-block mt-5">
+                <div class="case-details">
+                    <p class="text-xl font-bold">
+                        Игорь Крестинин
+                    </p>
+                    <p class="mt-2 text-lg">
+                        Ежемесячная выручка до: 0
+                    </p>
+                    <p class="mt-2 text-lg">
+                        После запуска через переписки: 3м+
+                    </p>
+                </div>
+                <div class="case-image mt-5">
+                    <img class="border-[1px] border-gray-700 rounded-lg" src="https://static.tildacdn.com/tild3835-3166-4961-b734-643934373635/__2022-08-27__1819.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="mt-20">
+            <div class="flex">
+                <div style="align-self: center;">
+                    <p class="text-3xl font-bold">
+                        Обьединив Единое окно и продажи через переписки вы увеличите выручку вашего проекта
+                    </p>
+                </div>
+                <div class="">
+                    <img src="https://static.tildacdn.com/tild6163-3532-4334-a636-666132363736/Saly-43.png" class="max-w-[135px]" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section pb-[30px]">
+    <div class="m-auto container max-w-[1160px] py-5 mt-5">
+        <p class="text-4xl font-[600] leading-[43px]">
+            Из блиц-курса вы узнаете:
+        </p>
+        <p class="text-xl mt-5">
+            Зачем продавать в переписках?
+        </p>
+        <p class="text-xl">
+            Как делать это эффективно и почему это позволяет кратно расти бизнесу.
+        </p>
+        <p class="text-xl">
+            Разберем форматы и примеры скриптов по продажам через переписки.
+        </p>
+        <p class="text-lg mt-5 font-bold">
+            Комментарий автора:
+        </p>
+        <p class="text-lg">
+            "Правильно написанный скрипт - это ваша снайперская винтовка, которая поражает клиента в самое сердце
+            Не оставляя ему возможности не купить ваш продукт
+        </p>
+        <p class="text-lg mt-2">
+            Именно правильно написанные скрипты - и позволяют нашим Отделам продаж делать такие выручки
+        </p>
+        <p class="text-lg mt-2">
+            Скрипт квалифицирует, презентует, убеждает, сажает идею в голову клиента, делает презентацию и обосновывает оффер и цену...
+        </p>
+        <p class="text-lg">
+            Скрипт - это психология и понимание темы продаж"
+        </p>
+        <p class="mt-10 text-2xl font-bold">
+            А для того, чтобы у вас была полная картина, как этим <br> пользоваться, бонусом мы дадим материалы:
+        </p>
+        <div class="accordion-panel mt-2">
+            <h2 class="accordion-title">
+                <button
+                        onclick="openAccordion('#fourth-accordion-button', '#fourth-accordion-content')"
+                        class="accordion-trigger"
+                        id="fourth-accordion-button"
+                        aria-controls="accordion-content"
+                >
+                    <span class="accordion-btn">
+                        1 бонус - КОНКУРЕНТНАЯ РАЗВЕДКА И АНАЛИЗ АУДИТОРИИ
+                    </span>
+                    <svg
+                            class="accordion-icon"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle cx="24" cy="24" r="24" fill="#FFFFFF" />
+                        <rect x="23" y="12" width="2" height="24" rx="1" fill="#17172C" />
+                        <rect
+                                x="36"
+                                y="23"
+                                width="2"
+                                height="24"
+                                rx="1"
+                                transform="rotate(90 36 23)"
+                                fill="#17172C"
+                        />
+                    </svg>
+                </button>
+            </h2>
+            <div
+                    class="accordion-content"
+                    role="region"
+                    aria-hidden=""
+                    aria-labelledby="panel-title"
+                    id="fourth-accordion-content"
+            >
+                <div>
+                    <p class="accordion-desc">
+                        <strong>Сможете поднять свой чек в 2 раза</strong> и выстроить очередь из клиентов на свои продукты и услуги.
+                        Все благодаря тому, что поймете, как достать реальные боли и желания своей ЦА.
+                        <br><br>
+                        <strong>Научитесь продавать идею своего продукта</strong> так, чтобы клиент был готов покупать ещё до объявления цены.
+                        <br>
+                        И вы больше не попадете в ситуацию, когда скрипты не работают на тот или иной сегмент целевой аудитории..
+                        <br><br>
+                        ﻿Как итог- только после этих анализов
+                        <strong> вы сможете написать действительно рабочие скрипты...</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-panel mt-1">
+            <h2 class="accordion-title">
+                <button
+                        onclick="openAccordion('#fifth-accordion-button', '#fifth-accordion-content')"
+                        class="accordion-trigger"
+                        id="fifth-accordion-button"
+                        aria-controls="accordion-content"
+                >
+                    <span class="accordion-btn">
+                        1 бонус - КОНКУРЕНТНАЯ РАЗВЕДКА И АНАЛИЗ АУДИТОРИИ
+                    </span>
+                    <svg
+                            class="accordion-icon"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle cx="24" cy="24" r="24" fill="#FFFFFF" />
+                        <rect x="23" y="12" width="2" height="24" rx="1" fill="#17172C" />
+                        <rect
+                                x="36"
+                                y="23"
+                                width="2"
+                                height="24"
+                                rx="1"
+                                transform="rotate(90 36 23)"
+                                fill="#17172C"
+                        />
+                    </svg>
+                </button>
+            </h2>
+            <div
+                    class="accordion-content"
+                    role="region"
+                    aria-hidden=""
+                    aria-labelledby="panel-title"
+                    id="fifth-accordion-content"
+            >
+                <div>
+                    <p class="accordion-desc">
+                        <strong>Сможете поднять свой чек в 2 раза</strong> и выстроить очередь из клиентов на свои продукты и услуги.
+                        Все благодаря тому, что поймете, как достать реальные боли и желания своей ЦА.
+                        <br><br>
+                        <strong>Научитесь продавать идею своего продукта</strong> так, чтобы клиент был готов покупать ещё до объявления цены.
+                        <br>
+                        И вы больше не попадете в ситуацию, когда скрипты не работают на тот или иной сегмент целевой аудитории..
+                        <br><br>
+                        ﻿Как итог- только после этих анализов
+                        <strong> вы сможете написать действительно рабочие скрипты...</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-panel mt-1">
+            <h2 class="accordion-title">
+                <button
+                        onclick="openAccordion('#sixth-accordion-button', '#sixth-accordion-content')"
+                        class="accordion-trigger"
+                        id="sixth-accordion-button"
+                        aria-controls="accordion-content"
+                >
+                    <span class="accordion-btn">
+                        1 бонус - КОНКУРЕНТНАЯ РАЗВЕДКА И АНАЛИЗ АУДИТОРИИ
+                    </span>
+                    <svg
+                            class="accordion-icon"
+                            viewBox="0 0 48 48"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <circle cx="24" cy="24" r="24" fill="#FFFFFF" />
+                        <rect x="23" y="12" width="2" height="24" rx="1" fill="#17172C" />
+                        <rect
+                                x="36"
+                                y="23"
+                                width="2"
+                                height="24"
+                                rx="1"
+                                transform="rotate(90 36 23)"
+                                fill="#17172C"
+                        />
+                    </svg>
+                </button>
+            </h2>
+            <div
+                    class="accordion-content"
+                    role="region"
+                    aria-hidden=""
+                    aria-labelledby="panel-title"
+                    id="sixth-accordion-content"
+            >
+                <div>
+                    <p class="accordion-desc">
+                        <strong>Сможете поднять свой чек в 2 раза</strong> и выстроить очередь из клиентов на свои продукты и услуги.
+                        Все благодаря тому, что поймете, как достать реальные боли и желания своей ЦА.
+                        <br><br>
+                        <strong>Научитесь продавать идею своего продукта</strong> так, чтобы клиент был готов покупать ещё до объявления цены.
+                        <br>
+                        И вы больше не попадете в ситуацию, когда скрипты не работают на тот или иной сегмент целевой аудитории..
+                        <br><br>
+                        ﻿Как итог- только после этих анализов
+                        <strong> вы сможете написать действительно рабочие скрипты...</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="!bg-white pt-[30px]">
+    <div class="m-auto container max-w-[1160px]">
+        <p class="text-4xl font-[600] leading-[60px]">
+            Для тех, кто рассматривает для себя возможность подключения к продамусу
+        </p>
+        <p class="mt-5 text-lg">
+            Я предлагаю принять решение на берегу:
+        </p>
+        <ul class="mt-10 list-disc list-inside">
+            <li class="text-2xl font-[600]">
+                Оставить все как есть и не работать с нами
+            </li>
+        </ul>
+        <p class="mt-5 text-lg">
+            И остаться на своей платежной системе или найти себе другую..
+        </p>
+        <p class="mt-5 text-lg">
+            Не иметь возможности выдавать рассрочки с повышенной одобряемостью, принимать платежи из-за границы, не иметь возможности пользоваться ЕО, подключать себе Интернет кассу и тратить на все это 50+тр в год...
+        </p>
+        <p class="mt-5 text-lg">
+            и остаться без прочих возможностей нашей платформы...
+        </p>
+        <ul class="mt-10 list-disc list-inside">
+            <li class="text-2xl font-[600]">
+                Начать работать с Продамус и сэкономить время, деньги и нервы
+            </li>
+        </ul>
+        <p class="mt-5 text-lg">
+            Получить возможность пользоваться сниженной комиссией для приема платежей, и всеми бонусами и функциями перечисленными выше..
+        </p>
+        <p class="mt-5 text-lg">
+            Получить бонус в виде воркшопа по продажам через переписки и поднять выручку своего проекта на 20% за счет переписок, и на 36% за счет виджета в геткурсе...
+        </p>
+    </div>
+    <div class="m-auto container max-w-[1000px] bg-[#1f1f1f] text-white rounded-lg px-20 py-5 m border-gray-700 border-[1px] mt-5">
+        <p class="text-4xl font-[600] leading-[60px] text-center mt-5">
+            Сколько все это стоит?
+        </p>
+
+        <p class="text-xl text-center leading-[28px]">
+            Если бы вы использовали сторонние сервисы и <br> эквайринги это бы обошлось вам в:
+        </p>
+
+        <div class="text-md text-center leading-[40px] mt-10">
+            <ul class="list-disc list-inside">
+                <li class="text-xl font-[400]">
+                    Подключение и обслуживание Кассы - 50.000+р в год (За десять лет 500.000р+)
+                </li>
+                <li class="text-xl font-[400] mt-2">
+                    Воркшоп по продажам через переписки - 5990р
+                </li>
+                <li class="text-xl font-[400] mt-2">
+                    Недополученная прибыль от клиентов из-за границы - (Ну давайте минимум в 100.000 рублей)
+                </li>
+                <li class="text-xl font-[400] mt-2">
+                    Недополученная прибыль от отказов по рассрочкам - (Страшно думать об этой цифре)
+                </li>
+                <li class="text-xl font-[400] mt-2">
+                    Недополученная прибыль от отсутствия виджета для оплаты и смс ссылок - 36% от оборота
+                </li>
+                <li class="text-xl font-[400] mt-2">
+                    ИТОГО: это сьедает более 200 тысяч рублей в год (Как минимум)
+                </li>
+            </ul>
+        </div>
+        <div class="mt-5 rounded-full bg-[#3d935e] max-w-[558px] text-center px-6 py-4 m-auto text-lg mb-10">
+            Итоговая цена подключения к платежной <br> системе Продамус на сегодняшний день <br> 10.000 рублей (Разовый платеж)
         </div>
 
     </div>
