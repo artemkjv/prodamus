@@ -564,36 +564,12 @@ video {
   position: relative;
 }
 
-.left-\[-80px\] {
-  left: -80px;
-}
-
-.top-\[-25px\] {
-  top: -25px;
-}
-
-.top-\[-40px\] {
-  top: -40px;
-}
-
-.top-\[50px\] {
-  top: 50px;
-}
-
 .top-\[-15px\] {
   top: -15px;
 }
 
-.top-\[60xp\] {
-  top: 60xp;
-}
-
-.top-\[60px\] {
-  top: 60px;
-}
-
-.top-\[40px\] {
-  top: 40px;
+.top-\[-40px\] {
+  top: -40px;
 }
 
 .top-\[30px\] {
@@ -811,14 +787,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.p-\[10px\] {
-  padding: 10px;
-}
-
-.p-\[5px\] {
-  padding: 5px;
-}
-
 .p-\[8px\] {
   padding: 8px;
 }
@@ -876,12 +844,16 @@ video {
   padding-bottom: 0px;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .pb-\[30px\] {
   padding-bottom: 30px;
 }
 
-.pl-\[142px\] {
-  padding-left: 142px;
+.pl-\[20px\] {
+  padding-left: 20px;
 }
 
 .pt-0 {
@@ -894,14 +866,6 @@ video {
 
 .pt-\[60px\] {
   padding-top: 60px;
-}
-
-.pb-5 {
-  padding-bottom: 1.25rem;
-}
-
-.pl-\[20px\] {
-  padding-left: 20px;
 }
 
 .text-center {
@@ -921,11 +885,6 @@ video {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
-}
-
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
 }
 
 .text-lg {
@@ -972,10 +931,6 @@ video {
 
 .leading-\[50px\] {
   line-height: 50px;
-}
-
-.leading-\[60px\] {
-  line-height: 60px;
 }
 
 .leading-\[65px\] {
@@ -1149,12 +1104,12 @@ p
     margin-top: 0px;
   }
 
-  .sm\:mt-5 {
-    margin-top: 1.25rem;
-  }
-
   .sm\:mt-10 {
     margin-top: 2.5rem;
+  }
+
+  .sm\:mt-5 {
+    margin-top: 1.25rem;
   }
 
   .sm\:block {
@@ -1176,10 +1131,6 @@ p
 
   .sm\:max-w-\[324px\] {
     max-width: 324px;
-  }
-
-  .sm\:self-center {
-    align-self: center;
   }
 
   .sm\:whitespace-break-spaces {
@@ -1216,6 +1167,11 @@ p
     text-align: start;
   }
 
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -1231,20 +1187,15 @@ p
     line-height: 1;
   }
 
-  .sm\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
   .sm\:leading-\[43px\] {
     line-height: 43px;
   }
 
-  .sm\:leading-\[65px\] {
-    line-height: 65px;
-  }
-
   .sm\:leading-\[60px\] {
     line-height: 60px;
+  }
+
+  .sm\:leading-\[65px\] {
+    line-height: 65px;
   }
 }
