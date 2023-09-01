@@ -6,6 +6,14 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script>
+        function getQueryParams(url) {
+            const queryParams = {};
+            const urlSearchParams = new URLSearchParams(new URL(url).search);
+            urlSearchParams.forEach((value, key) => {
+                queryParams[key] = value;
+            });
+            return queryParams;
+        }
         var openAccordion = function (buttonId, contentId) {
             let button = $(buttonId)
             let content = $(contentId)
@@ -13,6 +21,27 @@
             expanded ? button[0].removeAttribute('aria-expanded') : button[0].setAttribute('aria-expanded', '')
             expanded ? content[0].setAttribute('aria-hidden', '') : content[0].removeAttribute('aria-hidden')
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentURL = window.location.href;
+            const queryParams = getQueryParams(currentURL);
+            let newURL = 'https://t.me/MyNewSaleBot_bot';
+            // Check if the required parameters (source, adset, product) exist
+            if (queryParams?.source) {
+                // Construct the new URL
+                newURL = newURL+ `?start=${queryParams.source}`;
+            }
+            if (queryParams?.adset) {
+                newURL = queryParams?.source ? newURL + `_${queryParams.adset}` : newURL + `?start=${queryParams.adset}`;  }
+            if (queryParams?.product) {
+                newURL = queryParams?.source || queryParams?.adset ?  newURL + `_${queryParams.product}` : newURL + `?start=${queryParams.product}`;
+            }
+            const botLink = document.querySelector('[data-link="first"]');
+            const secondLink = document.querySelector('[data-link="second"]');
+
+            // Set the href attribute of the element
+            botLink.href = newURL;
+            secondLink.href = newURL;
+        })
     </script>
 </head>
 <body>
@@ -383,7 +412,7 @@
                 >
                     <div>
                         <p class="accordion-desc">
-                            1. 1. Пишешь нашему менеджеру, он даёт тебе кабинет <a href="https://broapps.club/">@тут ссылка на менеджера</a>
+                            1. Пишешь нашему менеджеру, он даёт тебе кабинет <a href="https://broapps.club/">@тут ссылка на менеджера</a>
                             <br>
                             2. Создаёшь поток
                             <br>
@@ -895,7 +924,7 @@
             </p>
 
             <div class="mt-5 rounded-full bg-black w-[fit-content] border border-black text-center px-10 py-6 m-auto text-md font-bold hover:bg-white hover:text-black duration-300">
-                <a href="#">
+                <a target="_blank" data-link="first">
                     Подключиться к BroApps за 300$
                 </a>
             </div>
@@ -981,7 +1010,7 @@
             </ul>
 
             <div class="mt-5 rounded-full bg-[#3d935e] w-[fit-content] text-white border border-black text-center px-20 py-4 text-lg font-bold hover:bg-black duration-300">
-                <a href="#">
+                <a target="_blank" data-link="second">
                     Оставить заявку
                 </a>
             </div>
